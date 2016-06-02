@@ -1,0 +1,23 @@
+global:
+  project: alf
+  volumepath: /var/lib/grua/volumes
+base:
+  build: base
+  tag: marsbard/base
+  run: false
+  before: 
+    - tomcat
+tomcat:
+  build: tomcat
+  tag: marsbard/tomcat
+  run: false
+########################################################################################
+activiti:
+  build: activiti
+  tag: alf/activiti
+  options:
+    - "--expose=8080"
+#   - "--hostname=activiti.weave.local"
+  ports:
+    - "8581:8080"
+
